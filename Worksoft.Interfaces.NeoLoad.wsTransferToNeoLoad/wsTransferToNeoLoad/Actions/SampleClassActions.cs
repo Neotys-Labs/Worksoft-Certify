@@ -62,7 +62,9 @@ namespace wsTransferToNeoLoad
 
         public ActionResult SampleActionHandler(ProcessStepData stepData)
         {
-            return new ActionResult(true, $"It Works! Window was {stepData.WindowAttribute}; Object was {stepData.ObjectAttribute}", "123");
+            LoggingService _log = LoggingService.GetLogger;
+            _log.Info("This is an info log !");
+            return new ActionResult(true, $"Ok, It Works! Window was {stepData.WindowAttribute}; Object was {stepData.ObjectAttribute}", "123");
         }
 
         public ActionResult AddHandler(ProcessStepData stepData)
