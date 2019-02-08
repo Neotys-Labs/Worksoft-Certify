@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
-
+using Neotys.DesignAPI.Client;
+using Neotys.DesignAPI.Model;
 namespace wsTransferToNeoLoad
 {
     /// <summary>
@@ -18,6 +19,8 @@ namespace wsTransferToNeoLoad
         // Map Certify Action names to method action handlers
         private static readonly Dictionary<string, Func<ProcessStepData, ActionResult>> ActionMap =
             new Dictionary<string, Func<ProcessStepData, ActionResult>>();
+
+        LoggingService _log = LoggingService.GetLogger;
 
         public SampleClassActions()
         {
@@ -62,9 +65,34 @@ namespace wsTransferToNeoLoad
 
         public ActionResult SampleActionHandler(ProcessStepData stepData)
         {
-            LoggingService _log = LoggingService.GetLogger;
-            _log.Info("This is an info log !");
-            return new ActionResult(true, $"Ok, It Works! Window was {stepData.WindowAttribute}; Object was {stepData.ObjectAttribute}", "123");
+            _log.Info("Starting execution of SampleActionHandler");
+            string apiKey = "";
+            string error = "";
+            stepData.GetActionArg("ApiKey", ref apiKey, ref error);
+            
+            string url = "http://localhost:7400/Design/v1/Service.svc/";
+            _log.Info("Connecting to NeoLoad Design API");
+            IDesignAPIClient _client = DesignAPIClientFactory.NewClient(url, apiKey);
+            
+            StartRecordingParamsBuilder _startRecordingPB = new StartRecordingParamsBuilder();
+
+            string message;
+            bool status;
+            try
+            {
+                _log.Info("Sending API call StartRecording");
+                _client.StartRecording(_startRecordingPB.Build());
+                message = "record started";
+                status = true;
+            }
+            catch (Exception e)
+            {
+                _log.Error("Unable to send API call StartRecording", e);
+                status = false;
+                message = e.Message;
+            }
+
+            return new ActionResult(status, message, "");
         }
 
         public ActionResult AddHandler(ProcessStepData stepData)
