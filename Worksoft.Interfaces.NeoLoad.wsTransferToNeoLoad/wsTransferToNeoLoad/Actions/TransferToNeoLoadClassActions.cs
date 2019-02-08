@@ -53,6 +53,7 @@ namespace wsTransferToNeoLoad
             string apiKey = stepData.GetActionArg(StartRecordingParameters.API_KEY, "");
             string url = stepData.GetActionArg(StartRecordingParameters.DESIGN_API_URL, "http://localhost:7400/Design/v1/Service.svc/");
             string userPath = stepData.GetActionArg(StartRecordingParameters.USER_PATH, "");
+            string addressToExclude = stepData.GetActionArg(StartRecordingParameters.ADDRESS_TO_EXCLUDE, "");
 
             _log.Info("Connecting to NeoLoad Design API");
             neoLoadDesignApiInstance = new NeoLoadDesignApiInstance(url, apiKey);
