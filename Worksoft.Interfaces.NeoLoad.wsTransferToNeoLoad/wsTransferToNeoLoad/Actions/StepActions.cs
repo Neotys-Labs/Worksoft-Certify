@@ -11,7 +11,7 @@ namespace wsTransferToNeoLoad
 
         static StepActions()
         {
-            ClassMap.Add(@"TransferToNeoLoadClass", new TransferToNeoLoadClassActions());
+            ClassMap.Add(@"TransferToNeoLoad", new TransferToNeoLoadClassActions());
         }
 
         // Process the requested action

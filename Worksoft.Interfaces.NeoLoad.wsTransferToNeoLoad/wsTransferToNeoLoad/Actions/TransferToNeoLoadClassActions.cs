@@ -26,8 +26,8 @@ namespace wsTransferToNeoLoad
         public TransferToNeoLoadClassActions()
         {
             // Manually add an action handler
-            ActionMap.Add("StartRecordingAction", data => { return StartRecordingActionHandler(data); });
-            ActionMap.Add("StopRecordingAction", data => { return StopRecordingActionHandler(data); });            
+            ActionMap.Add("StartRecording", data => { return StartRecordingActionHandler(data); });
+            ActionMap.Add("StopRecording", data => { return StopRecordingActionHandler(data); });            
         }
 
         public override ActionResult Execute(ProcessStepData stepData)
