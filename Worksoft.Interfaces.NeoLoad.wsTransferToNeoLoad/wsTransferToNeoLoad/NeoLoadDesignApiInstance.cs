@@ -13,12 +13,14 @@ namespace wsNeoLoad
         private bool _recordStarted = false;
         private string recorderProxyHost = null;
         private int recorderProxyPort = 0;
+        private int apiPort = 0;
 
         public NeoLoadDesignApiInstance(string url, string apiKey)
         {
             _client = DesignAPIClientFactory.NewClient(url, apiKey);
             recorderProxyHost = extractHost(url);
             recorderProxyPort = _client.GetRecorderSettings().ProxySettings.Port;
+            apiPort = extractPort(url);
         }
 
         public void SetUserPathName(string name)
@@ -86,14 +88,19 @@ namespace wsNeoLoad
             }
         }
 
+        public string GetRecorderProxyHost()
+        {
+            return recorderProxyHost;
+        }
+
         public int GetRecorderProxyPort()
         {
             return recorderProxyPort;
         }
 
-        public string GetRecorderProxyHost()
+        public int GetApiPort()
         {
-            return recorderProxyHost;
+            return apiPort;
         }
 
         private static string extractHost(string url)
@@ -109,6 +116,21 @@ namespace wsNeoLoad
             {
                 Console.WriteLine(ex.ToString());
                 return "localhost";
+            }
+        }
+
+        private static int extractPort(string url)
+        {
+            Uri uri;
+            try
+            {
+                uri = new Uri(url);
+                return uri.Port;
+            }
+            catch (SystemException ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return 7400;
             }
         }
     }

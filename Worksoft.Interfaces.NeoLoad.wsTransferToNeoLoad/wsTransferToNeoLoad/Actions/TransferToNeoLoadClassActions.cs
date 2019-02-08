@@ -57,8 +57,9 @@ namespace wsNeoLoad
 
             _log.Info("Connecting to NeoLoad Design API");
             neoLoadDesignApiInstance = new NeoLoadDesignApiInstance(url, apiKey);
+            SystemProxyHelper systemProxyHelper = null;
 
-            if(userPath != null && userPath.Length != 0)
+            if (userPath != null && userPath.Length != 0)
             {
                 neoLoadDesignApiInstance.SetUserPathName(userPath);
             }
@@ -71,6 +72,12 @@ namespace wsNeoLoad
                 int recorderProxyPort = neoLoadDesignApiInstance.GetRecorderProxyPort();
                 _log.Info("Recorder proxy (host:port) " + recorderProxyHost + ":" + recorderProxyPort);
 
+                int apiPort = neoLoadDesignApiInstance.GetApiPort();
+                systemProxyHelper = new SystemProxyHelper(apiPort);
+
+                _log.Info("Setting system proxy");
+                // TODO systemProxyHelper.setProxy(recorderProxyHost, recorderProxyPort, addressToExclude);
+                
                 _log.Info("Sending API call StartRecording");
                 neoLoadDesignApiInstance.StartRecording(recordMode);
                 message = "record started";
@@ -103,6 +110,10 @@ namespace wsNeoLoad
                 _log.Info("Sending API call StopRecording");
                 neoLoadDesignApiInstance.StopRecording();
                 message = "record stopped";
+
+                _log.Info("Restoring system proxy");
+                // TODO systemProxyHelper.restoreProxy();
+
                 status = true;
             }
             catch (Exception e)
