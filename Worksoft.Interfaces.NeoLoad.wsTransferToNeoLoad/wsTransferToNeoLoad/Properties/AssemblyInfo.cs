@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Worksoft")]
 [assembly: AssemblyProduct("wsTransferToNeoLoad")]
-[assembly: AssemblyCopyright("Copyright © Worksoft 2018")]
+[assembly: AssemblyCopyright("Copyright © Neotys 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
