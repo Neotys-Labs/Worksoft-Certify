@@ -7,7 +7,7 @@ namespace wsTransferToNeoLoad
     /// <summary>
     /// Action Handler for CertifyClass "SampleClass"
     /// Handles the following actions:
-    ///     "SampleAction",
+    ///     "StartRecordingAction",
     ///     "Add"
     /// </summary>
     ///
@@ -24,10 +24,8 @@ namespace wsTransferToNeoLoad
 
         public SampleClassActions()
         {
-//            actionMap.Add("SampleActionHandler", delegate(ProcessStepData data) { return SampleActionHandler(data); });
-
             // Manually add an action handler
-            ActionMap.Add("SampleAction", data => { return SampleActionHandler(data); });
+            ActionMap.Add("StartRecordingAction", data => { return StartRecordingActionHandler(data); });
             ActionMap.Add("Add", data => { return AddHandler(data); });
 
             // or Automagically add all methods matching a given signature as action handlers
@@ -63,9 +61,9 @@ namespace wsTransferToNeoLoad
             return new ActionResult(false, $"No action handler defined for action {stepData.Action}", "");
         }
 
-        public ActionResult SampleActionHandler(ProcessStepData stepData)
+        public ActionResult StartRecordingActionHandler(ProcessStepData stepData)
         {
-            _log.Info("Starting execution of SampleActionHandler");
+            _log.Info("Starting execution of StartRecordingActionHandler");
             string apiKey = "";
             string error = "";
             stepData.GetActionArg("ApiKey", ref apiKey, ref error);
