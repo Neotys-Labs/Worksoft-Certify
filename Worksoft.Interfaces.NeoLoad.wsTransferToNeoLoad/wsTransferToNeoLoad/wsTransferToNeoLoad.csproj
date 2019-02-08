@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\ActionResult.cs" />
-    <Compile Include="Actions\SampleClassActions.cs" />
+    <Compile Include="Actions\TransferToNeoLoadClassActions.cs" />
     <Compile Include="Actions\StepAction.cs" />
     <Compile Include="Actions\StepActions.cs" />
     <Compile Include="DispatcherResult.cs" />
