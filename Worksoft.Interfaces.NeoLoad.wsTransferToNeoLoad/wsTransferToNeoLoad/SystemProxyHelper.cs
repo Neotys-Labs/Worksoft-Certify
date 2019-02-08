@@ -1,0 +1,7 @@
+﻿namespace wsTransferToNeoLoad
+{
+    class SystemProxyHelper
+    {
+        
+    }
+}
