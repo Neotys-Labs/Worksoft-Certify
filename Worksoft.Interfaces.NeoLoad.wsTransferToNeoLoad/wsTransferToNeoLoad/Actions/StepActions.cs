@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace wsTransferToNeoLoad
+namespace wsNeoLoad
 {
     public static class StepActions
     {

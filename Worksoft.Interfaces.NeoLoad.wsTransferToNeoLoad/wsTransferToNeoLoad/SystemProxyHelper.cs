@@ -1,4 +1,4 @@
-﻿namespace wsTransferToNeoLoad
+﻿namespace wsNeoLoad
 {
     class SystemProxyHelper
     {

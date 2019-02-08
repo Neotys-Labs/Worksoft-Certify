@@ -2,7 +2,7 @@
 using Neotys.DesignAPI.Client;
 using Neotys.DesignAPI.Model;
 
-namespace wsTransferToNeoLoad
+namespace wsNeoLoad
 {
     class NeoLoadDesignApiInstance
     {
@@ -31,7 +31,7 @@ namespace wsTransferToNeoLoad
             return _recordStarted;
         }
 
-        public void StartSapRecording()
+        public void StartRecording(string recordMode)
         {
             _recordStarted = true;
             StartRecordingParamsBuilder _startRecordingPB = new StartRecordingParamsBuilder();
@@ -49,7 +49,9 @@ namespace wsTransferToNeoLoad
                     _startRecordingPB.virtualUser(_userPathName);
                 }
             }
-            _startRecordingPB.isSapGuiProtocol(true);
+
+            bool isSap = recordMode.ToLower().Contains("sap");
+            _startRecordingPB.isSapGuiProtocol(isSap);
 
             try
             {

@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace wsTransferToNeoLoad
+namespace wsNeoLoad
 {
     /// <summary>
     /// Main Entry point for Handling Certify Steps

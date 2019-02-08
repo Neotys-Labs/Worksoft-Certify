@@ -8,7 +8,7 @@ using log4net.Layout;
 using log4net.Repository.Hierarchy;
 using static log4net.LogManager;
 
-namespace wsTransferToNeoLoad
+namespace wsNeoLoad
 {
     public sealed class LoggingService : ILoggingService
     {
@@ -37,7 +37,7 @@ namespace wsTransferToNeoLoad
             patternLayout.ActivateOptions();
 
             var appender = new RollingFileAppender();
-            appender.Name = @"wsTransferToNeoLoad";
+            appender.Name = @"wsNeoLoad";
             appender.File = GetLogFileName();
             appender.AppendToFile = true;
             appender.MaxSizeRollBackups = 2;
@@ -51,7 +51,7 @@ namespace wsTransferToNeoLoad
 
             hierarchy.Configured = true;
 
-            log = GetLogger(@"wsTransferToNeoLoad");
+            log = GetLogger(@"wsNeoLoad");
         }
 
         private LoggingService()
@@ -219,7 +219,7 @@ namespace wsTransferToNeoLoad
 
         private static string GetLogFileName()
         {
-            return Environment.ExpandEnvironmentVariables(GetAppSetting("logfile", "wsTransferToNeoLoad.log"));
+            return Environment.ExpandEnvironmentVariables(GetAppSetting("logfile", "wsNeoLoad.log"));
         }
     }
 }

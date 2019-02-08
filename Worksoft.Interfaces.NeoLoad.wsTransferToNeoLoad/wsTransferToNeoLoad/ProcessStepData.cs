@@ -1,6 +1,6 @@
 using System;
 
-namespace wsTransferToNeoLoad
+namespace wsNeoLoad
 {
     public class ProcessStepData
     {

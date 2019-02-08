@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Neotys.DesignAPI.Client;
-using Neotys.DesignAPI.Model;
-namespace wsTransferToNeoLoad
+namespace wsNeoLoad
 {
     /// <summary>
     /// Action Handler for CertifyClass "TransferToNeoLoadClass"
@@ -51,6 +49,7 @@ namespace wsTransferToNeoLoad
             _log.Info("Starting execution of StartRecordingActionHandler");
 
             string apiKey = stepData.GetActionArg(StartRecordingParameters.API_KEY, "");
+            string recordMode = stepData.GetActionArg(StartRecordingParameters.RECORD_MODE, "");
             string url = stepData.GetActionArg(StartRecordingParameters.DESIGN_API_URL, "http://localhost:7400/Design/v1/Service.svc/");
             string userPath = stepData.GetActionArg(StartRecordingParameters.USER_PATH, "");
             string addressToExclude = stepData.GetActionArg(StartRecordingParameters.ADDRESS_TO_EXCLUDE, "");
@@ -72,7 +71,7 @@ namespace wsTransferToNeoLoad
                 _log.Info("Recorder proxy (host:port) " + recorderProxyHost + ":" + recorderProxyPort);
 
                 _log.Info("Sending API call StartRecording");
-                neoLoadDesignApiInstance.StartSapRecording();
+                neoLoadDesignApiInstance.StartRecording(recordMode);
                 message = "record started";
                 status = true;
             }
