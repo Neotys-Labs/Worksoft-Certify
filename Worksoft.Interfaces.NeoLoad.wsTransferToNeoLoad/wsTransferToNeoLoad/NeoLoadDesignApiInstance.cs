@@ -79,5 +79,10 @@ namespace wsTransferToNeoLoad
                 _recordStarted = false;
             }
         }
+
+        public int GetRecorderProxyPort()
+        {
+            return _client.GetRecorderSettings().ProxySettings.Port;
+        }
     }
 }

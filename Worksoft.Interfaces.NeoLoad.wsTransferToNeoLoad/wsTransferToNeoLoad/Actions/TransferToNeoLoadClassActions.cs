@@ -66,6 +66,10 @@ namespace wsTransferToNeoLoad
             bool status;
             try
             {
+                _log.Info("Retrieving Recorder proxy port");
+                int recorderProxyPort = neoLoadDesignApiInstance.GetRecorderProxyPort();
+                _log.Info("Recorder proxy port: " + recorderProxyPort);
+
                 _log.Info("Sending API call StartRecording");
                 neoLoadDesignApiInstance.StartSapRecording();
                 message = "record started";
