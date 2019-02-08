@@ -57,20 +57,20 @@ namespace wsNeoLoad
             string url = advancedParameters.GetValue(StartRecordingParameters.DESIGN_API_URL, "http://localhost:7400/Design/v1/Service.svc/");
            
             string addressToExclude = advancedParameters.GetValue(StartRecordingParameters.ADDRESS_TO_EXCLUDE, "");
-
-            _log.Info("Connecting to NeoLoad Design API");
-            neoLoadDesignApiInstance = new NeoLoadDesignApiInstance(url, apiKey);
-            SystemProxyHelper systemProxyHelper = null;
-
-            if (userPath != null && userPath.Length != 0)
-            {
-                neoLoadDesignApiInstance.SetUserPathName(userPath);
-            }
            
             string message;
             bool status;
             try
             {
+                _log.Info("Connecting to NeoLoad Design API");
+                neoLoadDesignApiInstance = new NeoLoadDesignApiInstance(url, apiKey);
+                SystemProxyHelper systemProxyHelper = null;
+
+                if (userPath != null && userPath.Length != 0)
+                {
+                    neoLoadDesignApiInstance.SetUserPathName(userPath);
+                }
+
                 String recorderProxyHost = neoLoadDesignApiInstance.GetRecorderProxyHost();
                 int recorderProxyPort = neoLoadDesignApiInstance.GetRecorderProxyPort();
                 _log.Info("Recorder proxy (host:port) " + recorderProxyHost + ":" + recorderProxyPort);
