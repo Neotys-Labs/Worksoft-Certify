@@ -21,7 +21,7 @@ namespace wsTransferToNeoLoad
 
         LoggingService _log = LoggingService.GetLogger;
 
-        NeoLoadDesignApiInstance neoLoadDesignApiInstance;
+        NeoLoadDesignApiInstance neoLoadDesignApiInstance = null;
 
         public TransferToNeoLoadClassActions()
         {
@@ -84,6 +84,12 @@ namespace wsTransferToNeoLoad
         public ActionResult StopRecordingActionHandler(ProcessStepData stepData)
         {
             _log.Info("Starting execution of StopRecordingActionHandler");
+
+            if(neoLoadDesignApiInstance == null || !neoLoadDesignApiInstance.IsRecordStarted())
+            {
+                _log.Info("Recording not started, nothing to stop.");
+                return new ActionResult(false, "No recording started", "");
+            }
 
             string message;
             bool status;
