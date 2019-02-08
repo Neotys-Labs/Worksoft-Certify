@@ -29,24 +29,15 @@ namespace wsTransferToNeoLoad
 
         public int IsFatal { get; set; }
 
-        public bool GetActionArg(string parameterName, ref string value, ref string errorMsg)
+        public string GetActionArg(string parameterName, string defaultValue)
         {
-//            object[] args = { parameterName ?? string.Empty, value ?? string.Empty, errorMsg ?? string.Empty };
-//            ParameterModifier[] paramMod = { new ParameterModifier(3) };
-//            paramMod[0][0] = true;
-//            paramMod[0][1] = true;
-//            paramMod[0][2] = true;
-
+            string value = defaultValue;
+            string errorMsg = "";
             var retVal = (int) GetWsPerform().GetActionArg(ref parameterName, ref value, ref errorMsg);
-//                BindingFlags.InvokeMethod | BindingFlags.Instance | BindingFlags.Public,
-//                null, wsLib, args, paramMod, null, null);
-
-//            parameterName = args[0] as string;
-//            value = args[1] as string;
-//            errorMsg = args[2] as string;
 
             _log.Debug($"Get Argument {parameterName}={value}");
-            return retVal != 0;
+
+            return retVal != 0 ? value : defaultValue;
         }
 
 

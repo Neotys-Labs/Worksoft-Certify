@@ -21,6 +21,8 @@ namespace wsTransferToNeoLoad
 
         LoggingService _log = LoggingService.GetLogger;
 
+        NeoLoadDesignApiInstance neoLoadDesignApiInstance;
+
         public TransferToNeoLoadClassActions()
         {
             // Manually add an action handler
@@ -47,22 +49,25 @@ namespace wsTransferToNeoLoad
         public ActionResult StartRecordingActionHandler(ProcessStepData stepData)
         {
             _log.Info("Starting execution of StartRecordingActionHandler");
-            string apiKey = "";
-            string error = "";
-            stepData.GetActionArg("ApiKey", ref apiKey, ref error);
-            
-            string url = "http://localhost:7400/Design/v1/Service.svc/";
-            _log.Info("Connecting to NeoLoad Design API");
-            IDesignAPIClient _client = DesignAPIClientFactory.NewClient(url, apiKey);
-            
-            StartRecordingParamsBuilder _startRecordingPB = new StartRecordingParamsBuilder();
 
+            string apiKey = stepData.GetActionArg(StartRecordingParamaters.API_KEY, "");
+            string url = stepData.GetActionArg(StartRecordingParamaters.DESIGN_API_URL, "http://localhost:7400/Design/v1/Service.svc/");
+            string userPath = stepData.GetActionArg(StartRecordingParamaters.USER_PATH, "");
+
+            _log.Info("Connecting to NeoLoad Design API");
+            neoLoadDesignApiInstance = new NeoLoadDesignApiInstance(url, apiKey);
+
+            if(userPath != null && userPath.Length != 0)
+            {
+                neoLoadDesignApiInstance.SetUserPathName(userPath);
+            }
+           
             string message;
             bool status;
             try
             {
                 _log.Info("Sending API call StartRecording");
-                _client.StartRecording(_startRecordingPB.Build());
+                neoLoadDesignApiInstance.StartSapRecording();
                 message = "record started";
                 status = true;
             }
@@ -79,23 +84,13 @@ namespace wsTransferToNeoLoad
         public ActionResult StopRecordingActionHandler(ProcessStepData stepData)
         {
             _log.Info("Starting execution of StopRecordingActionHandler");
-            string apiKey = "";
-            string error = "";
-            stepData.GetActionArg("ApiKey", ref apiKey, ref error);
-
-            string url = "http://localhost:7400/Design/v1/Service.svc/";
-            _log.Info("Connecting to NeoLoad Design API");
-            // TODO retrieve client from singleton
-            IDesignAPIClient _client = DesignAPIClientFactory.NewClient(url, apiKey);
-
-            StopRecordingParamsBuilder _stopRecordingPB = new StopRecordingParamsBuilder();
 
             string message;
             bool status;
             try
             {
                 _log.Info("Sending API call StopRecording");
-                _client.StopRecording(_stopRecordingPB.Build());
+                neoLoadDesignApiInstance.StopRecording();
                 message = "record stopped";
                 status = true;
             }
