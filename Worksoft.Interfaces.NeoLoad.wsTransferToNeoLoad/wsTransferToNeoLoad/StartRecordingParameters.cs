@@ -1,6 +1,6 @@
 ﻿namespace wsTransferToNeoLoad
 {
-    class StartRecordingParamaters
+    class StartRecordingParameters
     {
         public static readonly string DESIGN_API_URL = "designApiUrl";
         public static readonly string API_KEY = "apiKey";

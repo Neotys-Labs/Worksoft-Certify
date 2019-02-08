@@ -50,9 +50,9 @@ namespace wsTransferToNeoLoad
         {
             _log.Info("Starting execution of StartRecordingActionHandler");
 
-            string apiKey = stepData.GetActionArg(StartRecordingParamaters.API_KEY, "");
-            string url = stepData.GetActionArg(StartRecordingParamaters.DESIGN_API_URL, "http://localhost:7400/Design/v1/Service.svc/");
-            string userPath = stepData.GetActionArg(StartRecordingParamaters.USER_PATH, "");
+            string apiKey = stepData.GetActionArg(StartRecordingParameters.API_KEY, "");
+            string url = stepData.GetActionArg(StartRecordingParameters.DESIGN_API_URL, "http://localhost:7400/Design/v1/Service.svc/");
+            string userPath = stepData.GetActionArg(StartRecordingParameters.USER_PATH, "");
 
             _log.Info("Connecting to NeoLoad Design API");
             neoLoadDesignApiInstance = new NeoLoadDesignApiInstance(url, apiKey);

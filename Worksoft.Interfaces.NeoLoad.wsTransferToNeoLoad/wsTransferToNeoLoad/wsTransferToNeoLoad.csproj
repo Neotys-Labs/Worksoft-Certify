@@ -60,7 +60,7 @@
     <Compile Include="NeoLoadDesignApiInstance.cs" />
     <Compile Include="ProcessStepData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StartRecordingParamters.cs" />
+    <Compile Include="StartRecordingParameters.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.8" />
