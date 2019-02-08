@@ -50,6 +50,7 @@ namespace wsNeoLoad
 
             string apiKey = stepData.GetActionArg(StartRecordingParameters.API_KEY, "");
             string recordMode = stepData.GetActionArg(StartRecordingParameters.RECORD_MODE, "");
+            string advanced = stepData.GetActionArg(StartRecordingParameters.ADVANCED, "");
             string url = stepData.GetActionArg(StartRecordingParameters.DESIGN_API_URL, "http://localhost:7400/Design/v1/Service.svc/");
             string userPath = stepData.GetActionArg(StartRecordingParameters.USER_PATH, "");
             string addressToExclude = stepData.GetActionArg(StartRecordingParameters.ADDRESS_TO_EXCLUDE, "");

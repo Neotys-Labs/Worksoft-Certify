@@ -7,7 +7,7 @@
     <ProjectGuid>{10F57395-722D-493B-87A9-C0C3080B0C87}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>wsTransferToNeoLoad</RootNamespace>
+    <RootNamespace>wsNeoLoad</RootNamespace>
     <AssemblyName>wsTransferToNeoLoad</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -54,6 +54,7 @@
     <Compile Include="Actions\TransferToNeoLoadClassActions.cs" />
     <Compile Include="Actions\StepAction.cs" />
     <Compile Include="Actions\StepActions.cs" />
+    <Compile Include="AdvancedParameters.cs" />
     <Compile Include="DispatcherResult.cs" />
     <Compile Include="ILoggingService.cs" />
     <Compile Include="LoggingService.cs" />
@@ -62,7 +63,7 @@
     <Compile Include="ProcessStepData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StartRecordingParameters.cs" />
-	<Compile Include="SystemProxyHelper.cs" />
+    <Compile Include="SystemProxyHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.8" />

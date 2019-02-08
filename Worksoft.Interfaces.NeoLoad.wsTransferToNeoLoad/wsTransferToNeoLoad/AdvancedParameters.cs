@@ -1,0 +1,8 @@
+﻿namespace wsNeoLoad
+{
+    class AdvancedParameters
+    {
+
+
+    }
+}
