@@ -13,16 +13,16 @@ namespace wsNeoLoad
         private bool _userPathExist = false;
         private bool _recordStarted = false;
 
-        private string recorderProxyHost = null;
-        private int recorderProxyPort = 0;
-        private int apiPort = 0;
+        private string _recorderProxyHost = null;
+        private int _recorderProxyPort = 0;
+        private int _apiPort = 0;
 
         public NeoLoadDesignApiInstance(string url, string apiKey)
         {
             _client = DesignAPIClientFactory.NewClient(url, apiKey);
-            recorderProxyHost = extractHost(url);
-            recorderProxyPort = _client.GetRecorderSettings().ProxySettings.Port;
-            apiPort = extractPort(url);
+            _recorderProxyHost = ExtractHost(url);
+            _recorderProxyPort = _client.GetRecorderSettings().ProxySettings.Port;
+            _apiPort = ExtractPort(url);
         }
 
         public void SetUserPathName(string name)
@@ -35,18 +35,20 @@ namespace wsNeoLoad
             return _recordStarted;
         }
 
-        public void StartRecording(string recordMode)
+        public void StartRecording(string recordMode, string userAgent, bool isHttp2)
         {
             _recordStarted = true;
-            StartRecordingParamsBuilder _startRecordingPB = new StartRecordingParamsBuilder();
-            handleUserPathName(_startRecordingPB);
+            StartRecordingParamsBuilder startRecordingPB = new StartRecordingParamsBuilder();
+            HandleUserPathName(startRecordingPB);
 
             bool isSap = recordMode.ToLower().Contains("sap");
-            _startRecordingPB.isSapGuiProtocol(isSap);
+            startRecordingPB.isSapGuiProtocol(isSap);
+            startRecordingPB.isHTTP2Protocol(isHttp2);
+            startRecordingPB.userAgent(userAgent);
 
             try
             {
-                _client.StartRecording(_startRecordingPB.Build());
+                _client.StartRecording(startRecordingPB.Build());
             }
             catch (Exception e)
             {
@@ -55,7 +57,7 @@ namespace wsNeoLoad
             }
         }
 
-        private void handleUserPathName(StartRecordingParamsBuilder _startRecordingPB)
+        private void HandleUserPathName(StartRecordingParamsBuilder startRecordingPB)
         {
             if (_userPathName != null && _userPathName.Length != 0)
             {
@@ -66,16 +68,16 @@ namespace wsNeoLoad
                     _userPathExist = _client.ContainsUserPath(_containsBuilder.Build());
                     if (_userPathExist)
                     {
-                        _startRecordingPB.virtualUser(_userPathName + "_recording");
+                        startRecordingPB.virtualUser(_userPathName + "_recording");
                     }
                     else
                     {
-                        _startRecordingPB.virtualUser(_userPathName);
+                        startRecordingPB.virtualUser(_userPathName);
                     }
                 }
                 else
                 {
-                    _startRecordingPB.virtualUser(_userPathName);
+                    startRecordingPB.virtualUser(_userPathName);
                 }
             }
         }
@@ -100,20 +102,20 @@ namespace wsNeoLoad
 
         public string GetRecorderProxyHost()
         {
-            return recorderProxyHost;
+            return _recorderProxyHost;
         }
 
         public int GetRecorderProxyPort()
         {
-            return recorderProxyPort;
+            return _recorderProxyPort;
         }
 
         public int GetApiPort()
         {
-            return apiPort;
+            return _apiPort;
         }
 
-        private static string extractHost(string url)
+        private static string ExtractHost(string url)
         {
             Uri uri;
             try
@@ -129,14 +131,14 @@ namespace wsNeoLoad
             }
         }
 
-        public void setUpdateUserPath(bool updateUserPath)
+        public void SetUpdateUserPath(bool updateUserPath)
         {
             _updateUserPath = updateUserPath;
 
 
         }
 
-        private static int extractPort(string url)
+        private static int ExtractPort(string url)
         {
             Uri uri;
             try

@@ -59,6 +59,8 @@ namespace wsNeoLoad
             string url = advancedParameters.GetValue(Parameters.DESIGN_API_URL, "http://localhost:7400/Design/v1/Service.svc/");
             bool updateUserPath = advancedParameters.GetBooleanValue(Parameters.UPDATE_USER_PATH, "true");
 
+            string userAgent = advancedParameters.GetValue(Parameters.USER_AGENT, "");
+            bool isHttp2 = advancedParameters.GetBooleanValue(Parameters.IS_HTTP2, "true");
             string addressToExclude = advancedParameters.GetValue(Parameters.ADDRESS_TO_EXCLUDE, "");
            
             string message;
@@ -74,7 +76,7 @@ namespace wsNeoLoad
                     neoLoadDesignApiInstance.SetUserPathName(userPath);
                 }
 
-                neoLoadDesignApiInstance.setUpdateUserPath(updateUserPath);
+                neoLoadDesignApiInstance.SetUpdateUserPath(updateUserPath);
 
                 String recorderProxyHost = neoLoadDesignApiInstance.GetRecorderProxyHost();
                 int recorderProxyPort = neoLoadDesignApiInstance.GetRecorderProxyPort();
@@ -87,7 +89,7 @@ namespace wsNeoLoad
                 // TODO systemProxyHelper.setProxy(recorderProxyHost, recorderProxyPort, addressToExclude);
                 
                 _log.Info("Sending API call StartRecording");
-                neoLoadDesignApiInstance.StartRecording(recordMode);
+                neoLoadDesignApiInstance.StartRecording(recordMode, userAgent, isHttp2);
                 message = "record started";
                 status = true;
             }
