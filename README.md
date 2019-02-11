@@ -77,9 +77,9 @@ It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/d
 5. Enter the User Path name, you can use the **Process Name** built-in System Variable.
 
 6. Enter the record Mode:
-    * SAP GUI & WEB to record both SAP GUI and web (the System proxy will be updated)
+    * SAP GUI & WEB to record both SAP GUI and Web (the System proxy will be updated)
     * SAP GUI to record only SAP GUI.
-    * WEB to record only web (the System proxy will be updated)
+    * WEB to record only Web (the System proxy will be updated)
 
 7. At the end of the Process, add a new Step associated to the NeoLoad window with the **StopRecording** Action.
 
