@@ -21,6 +21,7 @@ namespace wsNeoLoad
         LoggingService _log = LoggingService.GetLogger;
 
         NeoLoadDesignApiInstance neoLoadDesignApiInstance = null;
+        SystemProxyHelper systemProxyHelper = null;
 
         public TransferToNeoLoadClassActions()
         {
@@ -68,8 +69,7 @@ namespace wsNeoLoad
             try
             {
                 _log.Info("Connecting to NeoLoad Design API");
-                neoLoadDesignApiInstance = new NeoLoadDesignApiInstance(url, apiKey);
-                SystemProxyHelper systemProxyHelper = null;
+                neoLoadDesignApiInstance = new NeoLoadDesignApiInstance(url, apiKey);                
 
                 if (userPath != null && userPath.Length != 0)
                 {
@@ -77,16 +77,19 @@ namespace wsNeoLoad
                 }
 
                 neoLoadDesignApiInstance.SetUpdateUserPath(updateUserPath);
+                
+                if (recordMode.Contains("WEB"))
+                {
+                    String recorderProxyHost = neoLoadDesignApiInstance.GetRecorderProxyHost();
+                    int recorderProxyPort = neoLoadDesignApiInstance.GetRecorderProxyPort();
+                    _log.Info("Recorder proxy (host:port) " + recorderProxyHost + ":" + recorderProxyPort);
 
-                String recorderProxyHost = neoLoadDesignApiInstance.GetRecorderProxyHost();
-                int recorderProxyPort = neoLoadDesignApiInstance.GetRecorderProxyPort();
-                _log.Info("Recorder proxy (host:port) " + recorderProxyHost + ":" + recorderProxyPort);
+                    int apiPort = neoLoadDesignApiInstance.GetApiPort();
+                    systemProxyHelper = new SystemProxyHelper(apiPort);
 
-                int apiPort = neoLoadDesignApiInstance.GetApiPort();
-                systemProxyHelper = new SystemProxyHelper(apiPort);
-
-                _log.Info("Setting system proxy");
-                // TODO systemProxyHelper.setProxy(recorderProxyHost, recorderProxyPort, addressToExclude);
+                    _log.Info("Setting system proxy for web recording");
+                    systemProxyHelper.setProxy(recorderProxyHost, recorderProxyPort, addressToExclude);
+                }                
                 
                 _log.Info("Sending API call StartRecording");
                 neoLoadDesignApiInstance.StartRecording(recordMode, userAgent, isHttp2);
@@ -142,8 +145,12 @@ namespace wsNeoLoad
                 neoLoadDesignApiInstance.StopRecording(stopRecordingParamsBuilder, updateUserPathParamsBuilder);
                 message = "record stopped";
 
-                _log.Info("Restoring system proxy");
-                // TODO systemProxyHelper.restoreProxy();
+                if (systemProxyHelper!=null)
+                {
+                    _log.Info("Restoring system proxy");
+                    systemProxyHelper.restoreProxy();
+                    systemProxyHelper = null;
+                }
 
                 status = true;
             }
