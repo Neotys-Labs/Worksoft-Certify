@@ -129,7 +129,7 @@ namespace wsNeoLoad
             }
         }
 
-        internal void setUpdateUserPath(bool updateUserPath)
+        public void setUpdateUserPath(bool updateUserPath)
         {
             _updateUserPath = updateUserPath;
 
@@ -149,6 +149,11 @@ namespace wsNeoLoad
                 Console.WriteLine(ex.ToString());
                 return 7400;
             }
+        }
+
+        public void StartTransaction(string transactionName)
+        {
+            _client.SetContainer(new SetContainerParams(transactionName));
         }
     }
 }

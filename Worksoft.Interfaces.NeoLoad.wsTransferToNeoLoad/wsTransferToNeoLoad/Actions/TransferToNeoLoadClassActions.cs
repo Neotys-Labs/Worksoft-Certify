@@ -26,7 +26,8 @@ namespace wsNeoLoad
         {
             // Manually add an action handler
             ActionMap.Add("StartRecording", data => { return StartRecordingActionHandler(data); });
-            ActionMap.Add("StopRecording", data => { return StopRecordingActionHandler(data); });            
+            ActionMap.Add("StopRecording", data => { return StopRecordingActionHandler(data); });
+            ActionMap.Add("StartTransaction", data => { return StartTransactionActionHandler(data); });
         }
 
         public override ActionResult Execute(ProcessStepData stepData)
@@ -147,6 +148,38 @@ namespace wsNeoLoad
             catch (Exception e)
             {
                 _log.Error("Unable to send API call StopRecording", e);
+                status = false;
+                message = e.Message;
+            }
+
+            return new ActionResult(status, message, "");
+        }
+
+        public ActionResult StartTransactionActionHandler(ProcessStepData stepData)
+        {
+            _log.Info("Starting execution of StartTransactionActionHandler");
+
+            if (neoLoadDesignApiInstance == null || !neoLoadDesignApiInstance.IsRecordStarted())
+            {
+                _log.Info("Recording not started.");
+                return new ActionResult(false, "No recording started", "");
+            }
+
+            string transactioName = stepData.GetActionArg(Parameters.NAME, "");
+
+            string message;
+            bool status;
+            try
+            {
+                _log.Info("Sending API call to StartTransaction");
+                neoLoadDesignApiInstance.StartTransaction(transactioName);
+                message = "transaction started";
+
+                status = true;
+            }
+            catch (Exception e)
+            {
+                _log.Error("Unable to send API call StartTransaction", e);
                 status = false;
                 message = e.Message;
             }

@@ -21,6 +21,6 @@
         public static readonly string UPDATE_SHARED_CONTANERS = "updateSharedContainers";
         public static readonly string MATCHING_THRESHOLD = "matchingThreshold";
 
-        public static readonly string TRANSACTION_NAME = "transactionName";
+        public static readonly string NAME = "name";
     }
 }
