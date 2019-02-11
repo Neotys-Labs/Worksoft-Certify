@@ -49,7 +49,7 @@ namespace wsNeoLoad
                 {
                     registry.SetValue("ProxyEnable", _proxyInUse ? 1 : 0);
                     registry.SetValue("ProxyServer", _proxySettings);
-                    registry.SetValue("ProxyOverride", _proxyOverride);
+                    registry.SetValue("ProxyOverride", _proxyOverride == null ? "": _proxyOverride);
                 }
                 else
                 {
