@@ -1,3 +1,4 @@
+using Neotys.DesignAPI.Model;
 using System;
 using System.Collections.Generic;
 namespace wsNeoLoad
@@ -48,15 +49,16 @@ namespace wsNeoLoad
         {
             _log.Info("Starting execution of StartRecordingActionHandler");
 
-            string apiKey = stepData.GetActionArg(StartRecordingParameters.API_KEY, "");
-            string recordMode = stepData.GetActionArg(StartRecordingParameters.RECORD_MODE, "");
-            string userPath = stepData.GetActionArg(StartRecordingParameters.USER_PATH, "");
-            string advanced = stepData.GetActionArg(StartRecordingParameters.ADVANCED, "");
+            string apiKey = stepData.GetActionArg(Parameters.API_KEY, "");
+            string recordMode = stepData.GetActionArg(Parameters.RECORD_MODE, "");
+            string userPath = stepData.GetActionArg(Parameters.USER_PATH, "");
+            string advanced = stepData.GetActionArg(Parameters.ADVANCED, "");
 
             AdvancedParameters advancedParameters = new AdvancedParameters(advanced);
-            string url = advancedParameters.GetValue(StartRecordingParameters.DESIGN_API_URL, "http://localhost:7400/Design/v1/Service.svc/");
-           
-            string addressToExclude = advancedParameters.GetValue(StartRecordingParameters.ADDRESS_TO_EXCLUDE, "");
+            string url = advancedParameters.GetValue(Parameters.DESIGN_API_URL, "http://localhost:7400/Design/v1/Service.svc/");
+            bool updateUserPath = advancedParameters.GetBooleanValue(Parameters.UPDATE_USER_PATH, "true");
+
+            string addressToExclude = advancedParameters.GetValue(Parameters.ADDRESS_TO_EXCLUDE, "");
            
             string message;
             bool status;
@@ -70,6 +72,8 @@ namespace wsNeoLoad
                 {
                     neoLoadDesignApiInstance.SetUserPathName(userPath);
                 }
+
+                neoLoadDesignApiInstance.setUpdateUserPath(updateUserPath);
 
                 String recorderProxyHost = neoLoadDesignApiInstance.GetRecorderProxyHost();
                 int recorderProxyPort = neoLoadDesignApiInstance.GetRecorderProxyPort();
@@ -106,12 +110,33 @@ namespace wsNeoLoad
                 return new ActionResult(false, "No recording started", "");
             }
 
+            string advanced = stepData.GetActionArg(Parameters.ADVANCED, "");
+            AdvancedParameters advancedParameters = new AdvancedParameters(advanced);
+
+            bool frameworkParameterSearch = advancedParameters.GetBooleanValue(Parameters.FRAMEWORK_PARAMETER_SEARCH, "true");
+            bool genericParameterSearch = advancedParameters.GetBooleanValue(Parameters.GENERIC_PARAMETER_SEARCH, "false");
+
+            StopRecordingParamsBuilder stopRecordingParamsBuilder = new StopRecordingParamsBuilder();
+            stopRecordingParamsBuilder.frameworkParameterSearch(frameworkParameterSearch).genericParameterSearch(genericParameterSearch);
+
+            bool deleteRecording = advancedParameters.GetBooleanValue(Parameters.DELETE_RECORDING, "true");
+            bool includeVariables = advancedParameters.GetBooleanValue(Parameters.INCLUDE_VARIABLES_IN_USER_PATH_UPDATE, "false");
+            bool updateSharedContainers = advancedParameters.GetBooleanValue(Parameters.UPDATE_SHARED_CONTANERS, "false");
+            string matchingThreshold = advancedParameters.GetValue(Parameters.MATCHING_THRESHOLD, "");
+
+            UpdateUserPathParamsBuilder updateUserPathParamsBuilder = new UpdateUserPathParamsBuilder();
+            updateUserPathParamsBuilder.deleteRecording(deleteRecording).includeVariables(includeVariables).updateSharedContainers(updateSharedContainers);
+            if (!matchingThreshold.Equals(""))
+            {
+                updateUserPathParamsBuilder.matchingThreshold(int.Parse(matchingThreshold));
+            }
+
             string message;
             bool status;
             try
             {
                 _log.Info("Sending API call StopRecording");
-                neoLoadDesignApiInstance.StopRecording();
+                neoLoadDesignApiInstance.StopRecording(stopRecordingParamsBuilder, updateUserPathParamsBuilder);
                 message = "record stopped";
 
                 _log.Info("Restoring system proxy");

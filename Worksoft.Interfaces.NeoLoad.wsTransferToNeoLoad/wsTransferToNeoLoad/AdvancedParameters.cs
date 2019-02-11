@@ -26,5 +26,10 @@ namespace wsNeoLoad
             return defaultValue;
         }
 
+        public bool GetBooleanValue(string parameterName, string defaultValue)
+        {
+            return GetValue(parameterName, defaultValue).ToLower().Equals("true");
+        }
+
     }
 }

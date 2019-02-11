@@ -8,9 +8,11 @@ namespace wsNeoLoad
     {
 
         private IDesignAPIClient _client = null;
+        private bool _updateUserPath = true;
         private string _userPathName = null;
         private bool _userPathExist = false;
         private bool _recordStarted = false;
+
         private string recorderProxyHost = null;
         private int recorderProxyPort = 0;
         private int apiPort = 0;
@@ -37,20 +39,7 @@ namespace wsNeoLoad
         {
             _recordStarted = true;
             StartRecordingParamsBuilder _startRecordingPB = new StartRecordingParamsBuilder();
-            if (_userPathName != null && _userPathName.Length != 0)
-            {
-                ContainsUserPathParamsBuilder _containsBuilder = new ContainsUserPathParamsBuilder();
-                _containsBuilder.name(_userPathName);
-                _userPathExist = _client.ContainsUserPath(_containsBuilder.Build());
-                if (_userPathExist)
-                {
-                    _startRecordingPB.virtualUser(_userPathName + "_recording");
-                }
-                else
-                {
-                    _startRecordingPB.virtualUser(_userPathName);
-                }
-            }
+            handleUserPathName(_startRecordingPB);
 
             bool isSap = recordMode.ToLower().Contains("sap");
             _startRecordingPB.isSapGuiProtocol(isSap);
@@ -66,21 +55,42 @@ namespace wsNeoLoad
             }
         }
 
-        public void StopRecording()
+        private void handleUserPathName(StartRecordingParamsBuilder _startRecordingPB)
         {
-            StopRecordingParamsBuilder _stopRecordingBuilder = new StopRecordingParamsBuilder();
+            if (_userPathName != null && _userPathName.Length != 0)
+            {
+                if (_updateUserPath)
+                {
+                    ContainsUserPathParamsBuilder _containsBuilder = new ContainsUserPathParamsBuilder();
+                    _containsBuilder.name(_userPathName);
+                    _userPathExist = _client.ContainsUserPath(_containsBuilder.Build());
+                    if (_userPathExist)
+                    {
+                        _startRecordingPB.virtualUser(_userPathName + "_recording");
+                    }
+                    else
+                    {
+                        _startRecordingPB.virtualUser(_userPathName);
+                    }
+                }
+                else
+                {
+                    _startRecordingPB.virtualUser(_userPathName);
+                }
+            }
+        }
 
+        public void StopRecording(StopRecordingParamsBuilder stopRecordingBuilder, UpdateUserPathParamsBuilder updateUserPathBuilder)
+        {
             if (_userPathExist)
             {
-                UpdateUserPathParamsBuilder _updateUserPathBuilder = new UpdateUserPathParamsBuilder();
-                _updateUserPathBuilder.name(_userPathName);
-                _updateUserPathBuilder.deleteRecording(true);
-                _stopRecordingBuilder.updateParams(_updateUserPathBuilder.Build());
+                updateUserPathBuilder.name(_userPathName);
+                stopRecordingBuilder.updateParams(updateUserPathBuilder.Build());
             }
 
             try
             {
-                _client.StopRecording(_stopRecordingBuilder.Build());
+                _client.StopRecording(stopRecordingBuilder.Build());
             }
             finally
             {
@@ -117,6 +127,13 @@ namespace wsNeoLoad
                 Console.WriteLine(ex.ToString());
                 return "localhost";
             }
+        }
+
+        internal void setUpdateUserPath(bool updateUserPath)
+        {
+            _updateUserPath = updateUserPath;
+
+
         }
 
         private static int extractPort(string url)
