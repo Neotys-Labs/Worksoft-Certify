@@ -69,6 +69,7 @@ It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/d
 
 5. In the New Window dialog, enter a Name, a Physical Name and select the NeoLoad Interface. Click OK
 
+<p align="center"><img src="/screenshots/addwindow.png" alt="Add Window" /></p>
 
 ## Modify a Worksoft Certify Process to convert it to a NeoLoad User Path.
 
