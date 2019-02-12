@@ -79,22 +79,30 @@ It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/d
 
 3. At the beginning of the Process, add a new Step associated to the NeoLoad window with the **StartRecording** Action.
 
+<p align="center"><img src="/screenshots/startrecording.png" alt="Start Recording" /></p>
+
 4. If identification is required by the NeoLoad API, use the **apiKey** parameter.
 
 5. Enter the User Path name, you can use the **Process Name** built-in System Variable.
 
 6. Enter the record Mode:
-    * **SAP GUI & WEB** to record both SAP GUI and Web (the System proxy will be updated)
+    * **SAP GUI & WEB** to record both SAP GUI and the Web traffic (the System proxy will be updated)
     * **SAP GUI** to record only SAP GUI.
-    * **WEB** to record only Web (the System proxy will be updated)
+    * **WEB** to record only Web traffic (the System proxy will be updated)
 
 7. At the end of the Process, add a new Step associated to the NeoLoad window with the **StopRecording** Action.
 
+<p align="center"><img src="/screenshots/process.png" alt="Process" /></p>
+
 **Tip** : Once the conversion is done, you can comment the Steps associated to the NeoLoad interface with the **Comment** button.
+
+<p align="center"><img src="/screenshots/comment.png" alt="Comment" /></p>
 
 ## Add NeoLoad Transactions.
 
 In the Edit Process dialog, add a new Step associated to the NeoLoad window with the **StartTransaction** Action each time you want to start a NeoLoad Transaction.
+
+<p align="center"><img src="/screenshots/transaction.png" alt="Transaction" /></p>
 
 ## Advanced Configuration
 
@@ -106,8 +114,8 @@ The **advanced** parameter of the **StartRecording** Action allows to define the
 * **userAgent**: Used to specify the user agent.
 
 If you want to define multiple options, the options must be separated by carriage return. For example:<br />
-updateUserPath=false
-isHttp2=false
+
+<p align="center"><img src="/screenshots/advanced.png" alt="Advanced" /></p>
 
 The **advanced** parameter of the **StopRecording** Action allows to define the following options:
 * **frameworkParameterSearch**: Default value is true.
