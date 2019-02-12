@@ -5,7 +5,7 @@
 ## Overview
 
 C# extension to integrate [Worksoft Certify](https://www.worksoft.com/) with [NeoLoad](https://www.neotys.com/neoload/overview) for Script maintenance.
-It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/documents/doc/neoload/latest/en/html/#11265.htm) to convert a SAP GUI or Web Worksoft Certify Process to a NeoLoad User Path or update an existing User Path.
+It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/documents/doc/neoload/latest/en/html/#11265.htm) to convert an SAP GUI or Web Worksoft Certify Process to a NeoLoad User Path or update an existing User Path.
 
 | Property | Value |
 | ----------------    | ----------------   |
@@ -20,11 +20,11 @@ It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/d
 
 1. Download the [latest release](https://github.com/Neotys-Labs/Worksoft-Certify/releases/latest)
 
-2. In the Navigation pane, click **Interfaces**. In the Interfaces Summary pane, right-click on the Interfaces node, then Import and select the **neoload-interface.xml** file from the release.
+2. In the Navigation pane, click **Interfaces**. In the **Interfaces Summary** pane, right-click the **Interfaces** node, then Import and select the **neoload-interface.xml** file from the release.
 
 <p align="center"><img src="/screenshots/interfacesimport.png" alt="Import NeoLoad interface" /></p>
 
-3. Unzip the **wsTransferToNeoLoad.zip** file in a folder nammed NeoLoad of the Worksoft\Certify\Interface Client\Worksoft\wsTest directory of the installation directory of Worksoft Certify(for example: C:\Program Files (x86)\Worksoft\Certify\Interface Client\Worksoft\wsTest\NeoLoad).
+3. Unzip the **wsTransferToNeoLoad.zip** file in a folder named "NeoLoad" in the Worksoft\Certify\Interface Client\Worksoft\wsTest directory of the installation directory of Worksoft Certify(for example: C:\Program Files (x86)\Worksoft\Certify\Interface Client\Worksoft\wsTest\NeoLoad).
 
 4. Unblock **wsTransferToNeoLoad.dll** (Right click the DLL > Properties and tick **Unblock**).
 
