@@ -5,7 +5,7 @@
 ## Overview
 
 C# extension to integrate [Worksoft Certify](https://www.worksoft.com/) with [NeoLoad](https://www.neotys.com/neoload/overview) for Script maintenance.
-It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/documents/doc/neoload/latest/en/html/#11265.htm) to convert an SAP GUI or Web Worksoft Certify Process to a NeoLoad User Path or update an existing User Path.
+It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/documents/doc/neoload/latest/en/html/#11265.htm) to convert an SAP GUI or Web Worksoft Certify Process to a NeoLoad User Path or update an existing one.
 
 | Property | Value |
 | ----------------    | ----------------   |
@@ -20,19 +20,19 @@ It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/d
 
 1. Download the [latest release](https://github.com/Neotys-Labs/Worksoft-Certify/releases/latest)
 
-2. In the Navigation pane, click **Interfaces**. In the **Interfaces Summary** pane, right-click the **Interfaces** node, then **Import** and select the "neoload-interface.xml" file from the release.
+2. In the Navigation pane, click **Interfaces**. In the **Interfaces Summary** pane, right-click the **Interfaces** node, then **Import** and select the **neoload-interface.xml** file from the [release](https://github.com/Neotys-Labs/Worksoft-Certify/releases/latest).
 
 <p align="center"><img src="/screenshots/interfacesimport.png" alt="Import NeoLoad interface" /></p>
 
-3. Unzip the "wsTransferToNeoLoad.zip" file in a folder named "NeoLoad" in the Worksoft\Certify\Interface Client\Worksoft\wsTest directory of the installation directory of Worksoft Certify(for example: C:\Program Files (x86)\Worksoft\Certify\Interface Client\Worksoft\wsTest\NeoLoad).
+3. Unzip the file **wsTransferToNeoLoad.zip** in a folder named **NeoLoad** in the directory **Worksoft\Certify\Interface Client\Worksoft\wsTest directory** of the Worksoft Certify installation directory (for example: **C:\Program Files (x86)\Worksoft\Certify\Interface Client\Worksoft\wsTest\NeoLoad**).
 
-4. Unblock "wsTransferToNeoLoad.dll" (Right click the DLL > Properties and tick **Unblock**).
+4. Unblock **wsTransferToNeoLoad.dll** (Right click the DLL > Properties and tick **Unblock**).
 
-5. Register the Assembly for COM interop by executing the following command: regasm.exe /codebase **wsTransferToNeoLoad.dll** (regasm.exe can be found in %SystemRoot%\Microsoft.NET\Framework\v2.0.50727)
+5. Register the Assembly for COM interop by executing the following command: 
+regasm.exe /codebase **wsTransferToNeoLoad.dll** 
+Executable **regasm.exe** can be found in **%SystemRoot%\Microsoft.NET\Framework\v2.0.50727**.
 
-6. Edit the file "Worksoft\Certify\Interface Client\Worksoft\wsTest\wsTest.exe.config" in the installation directory of Worksoft Certify:
-
-* Add the following node at the end of the configuration node:
+6. Edit the file **Worksoft\Certify\Interface Client\Worksoft\wsTest\wsTest.exe.config** in the Worksoft Certify installation directory, and add the following node at the end of the configuration node:
 ```xml
     <runtime>
         <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
@@ -51,7 +51,7 @@ It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/d
         </assemblyBinding>
       </runtime>
 ```
-7. Relaunch the Worksoft Certify.
+7. Relaunch Worksoft Certify.
 
 ## Modify the Worksoft application to allow the conversion with the NeoLoad interface.
 
@@ -77,13 +77,13 @@ It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/d
 
 2. In the **Applications** pane, select the process that you want to convert to a NeoLoad User Path, right click and select **Edit**.
 
-3. At the beginning of the Process, add a new Step associated with the NeoLoad window with the "StartRecording" Action.
+3. At the beginning of the Process, add a new Step associated with the NeoLoad window with the **StartRecording** Action.
 
 <p align="center"><img src="/screenshots/startrecording.png" alt="Start Recording" /></p>
 
-4. If identification is required by the NeoLoad API, use the "apiKey" parameter.
+4. If identification is required by the NeoLoad API, use the **apiKey** parameter.
 
-5. Enter the User Path name, you can use the "Process Name" built-in System Variable.
+5. Enter the User Path name, you can use the **Process Name** built-in System Variable.
 
 6. Enter the record Mode:
     * **SAP GUI & WEB** to record both SAP GUI and the Web traffic (the System proxy will be updated).
@@ -106,16 +106,20 @@ In the **Edit Process** dialog, add a new Step associated with the NeoLoad windo
 
 ## Advanced Configuration
 
+### StartRecording
+
 The **advanced** parameter of the **StartRecording** Action allows defining the following options:
-* **designApiUrl**: The URL of the NeoLoad design API, by default it is http://localhost:7400/Design/v1/Service.svc/.
+* **designApiUrl**: The URL of the NeoLoad design API, by default it is **http://localhost:7400/Design/v1/Service.svc/**.
 * **updateUserPath**: Used to automatically update the User Path with the same name. Default value is "true".
 * **isHttp2**: Used to record or not HTTP/2. Default value is "true".
-* **addressToExclude**: List of addresses separated by a semicolon. Requests and responses through these addresses will not be taken into account by NeoLoad when recording (example : 10.0.0.5:7400;10.3.1.15;localhost:9100)
+* **addressToExclude**: List of addresses separated by a semicolon. Requests and responses through these addresses will not be taken into account by NeoLoad when recording (for example: 10.0.0.5:7400;10.3.1.15;localhost:9100)
 * **userAgent**: Used to specify the user agent.
 
-If you want to define multiple options, the options must be separated by carriage return. For example:<br />
+If you want to define multiple options, the options must be separated by a carriage return. For example:<br />
 
 <p align="center"><img src="/screenshots/advanced.png" alt="Advanced" /></p>
+
+### StopRecording
 
 The **advanced** parameter of the **StopRecording** Action allows defining the following options:
 * **frameworkParameterSearch**: Default value is "true".
