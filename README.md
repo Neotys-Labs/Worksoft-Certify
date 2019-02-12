@@ -20,7 +20,7 @@ It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/d
 
 1. Download the [latest release](https://github.com/Neotys-Labs/Worksoft-Certify/releases/latest)
 
-2. In the Navigation pane, click **Interfaces**. In the **Interfaces Summary** pane, right-click the **Interfaces** node, then Import and select the **neoload-interface.xml** file from the release.
+2. In the Navigation pane, click **Interfaces**. In the **Interfaces Summary** pane, right-click the **Interfaces** node, then **Import** and select the **neoload-interface.xml** file from the release.
 
 <p align="center"><img src="/screenshots/interfacesimport.png" alt="Import NeoLoad interface" /></p>
 
