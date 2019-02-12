@@ -89,6 +89,24 @@ In the Edit Process dialog, add a new Step associated to the NeoLoad window with
 
 ## Advanced Configuration
 
+The **advanced** parameter of the **StartRecording** Action allows to define the following options:
+* **designApiUrl**: the URL of the NeoLoad design API, by default it is http://localhost:7400/Design/v1/Service.svc/.
+* **updateUserPath**: Used to automatically update the User Path with the same name. Default value is true.
+* **isHttp2**: Used to record or not HTTP/2. Default value is true.
+* **addressToExclude**: List of addresses separated by a semicolon. Requests and responses through these addresses will not be taken into account by Neaoload when recording (example : 10.0.0.5:7400;10.3.1.15;localhost:9100)
+* **userAgent**: Used to specify the user agent.
+
+If you want to define multiple options, the options must be separated by carriage return. For example:
+updateUserPath=false
+isHttp2=false
+
+The **advanced** parameter of the **StopRecording** Action allows to define the following options:
+* **frameworkParameterSearch**: Default value is true.
+* **genericParameterSearch**: Default value is false.
+* **deleteRecording**: Default value is true.
+* **includeVariablesInUserPathUpdate**: Default value is true.
+* **updateSharedContainers**: Default value is false.
+* **matchingThreshold**: Default value is 60.
 
 ## ChangeLog
 
