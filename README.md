@@ -20,17 +20,17 @@ It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/d
 
 1. Download the [latest release](https://github.com/Neotys-Labs/Worksoft-Certify/releases/latest)
 
-2. In the Navigation pane, click **Interfaces**. In the **Interfaces Summary** pane, right-click the **Interfaces** node, then **Import** and select the **neoload-interface.xml** file from the release.
+2. In the Navigation pane, click **Interfaces**. In the **Interfaces Summary** pane, right-click the **Interfaces** node, then **Import** and select the "neoload-interface.xml" file from the release.
 
 <p align="center"><img src="/screenshots/interfacesimport.png" alt="Import NeoLoad interface" /></p>
 
-3. Unzip the **wsTransferToNeoLoad.zip** file in a folder named "NeoLoad" in the Worksoft\Certify\Interface Client\Worksoft\wsTest directory of the installation directory of Worksoft Certify(for example: C:\Program Files (x86)\Worksoft\Certify\Interface Client\Worksoft\wsTest\NeoLoad).
+3. Unzip the "wsTransferToNeoLoad.zip" file in a folder named "NeoLoad" in the Worksoft\Certify\Interface Client\Worksoft\wsTest directory of the installation directory of Worksoft Certify(for example: C:\Program Files (x86)\Worksoft\Certify\Interface Client\Worksoft\wsTest\NeoLoad).
 
-4. Unblock **wsTransferToNeoLoad.dll** (Right click the DLL > Properties and tick **Unblock**).
+4. Unblock "wsTransferToNeoLoad.dll" (Right click the DLL > Properties and tick **Unblock**).
 
 5. Register the Assembly for COM interop by executing the following command: regasm.exe" /codebase **wsTransferToNeoLoad.dll** (regasm.exe can be found in %SystemRoot%\Microsoft.NET\Framework\v2.0.50727)
 
-6. Edit the file **Worksoft\Certify\Interface Client\Worksoft\wsTest\wsTest.exe.config** in the installation directory of Worksoft Certify:
+6. Edit the file "Worksoft\Certify\Interface Client\Worksoft\wsTest\wsTest.exe.config" in the installation directory of Worksoft Certify:
 
 * Add the following node at the end of the configuration node:
 ```xml
@@ -57,17 +57,17 @@ It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/d
 
 1. In the Navigation pane, click **Applications**.
 
-2. In the **Applications** pane, on the version of the application that contains the process that you want to convert to a NeoLoad User Path, right-click and select **Edit**.
+2. In the **Applications** pane, on the version of the application that contains the process that you want to convert to a NeoLoad User Path, right click and select **Edit**.
 
 <p align="center"><img src="/screenshots/applicationsedit.png" alt="Edit Application" /></p>
 
-3. In **Edit Application Version** window, select the **NeoLoad** interface in the **Interfaces** section and click OK.
+3. In **Edit Application Version** window, select the **NeoLoad** interface in the **Interfaces** section and click **OK**.
 
 <p align="center"><img src="/screenshots/applicationneoload.png" alt="Select NeoLoad" /></p>
 
 4. Right click again on the version and select **New Window**.
 
-5. In the **New Window** dialog, enter a Name, a Physical Name and select the NeoLoad Interface. Click OK.
+5. In the **New Window** dialog, enter a Name, a Physical Name and select the NeoLoad Interface. Click **OK**.
 
 <p align="center"><img src="/screenshots/addwindow.png" alt="Add Window" /></p>
 
@@ -75,15 +75,15 @@ It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/d
 
 1. In the Navigation pane, click **Processes**.
 
-2. In the **Applications** pane, select the process that you want to convert to a NeoLoad User Path, right-click and select **Edit**.
+2. In the **Applications** pane, select the process that you want to convert to a NeoLoad User Path, right click and select **Edit**.
 
-3. At the beginning of the Process, add a new Step associated with the NeoLoad window with the **StartRecording** Action.
+3. At the beginning of the Process, add a new Step associated with the NeoLoad window with the "StartRecording" Action.
 
 <p align="center"><img src="/screenshots/startrecording.png" alt="Start Recording" /></p>
 
-4. If identification is required by the NeoLoad API, use the **apiKey** parameter.
+4. If identification is required by the NeoLoad API, use the "apiKey" parameter.
 
-5. Enter the User Path name, you can use the **Process Name** built-in System Variable.
+5. Enter the User Path name, you can use the "Process Name" built-in System Variable.
 
 6. Enter the record Mode:
     * **SAP GUI & WEB** to record both SAP GUI and the Web traffic (the System proxy will be updated).
@@ -98,7 +98,7 @@ It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/d
 
 <p align="center"><img src="/screenshots/comment.png" alt="Comment" /></p>
 
-## Add NeoLoad Transactions.
+## Add NeoLoad Transactions
 
 In the **Edit Process** dialog, add a new Step associated with the NeoLoad window with the **StartTransaction** Action each time you want to start a NeoLoad Transaction.
 
