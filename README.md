@@ -53,21 +53,21 @@ It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/d
 ```
 7. Relaunch the Worksoft Certify.
 
-## Modify the Worksoft Application to allow the conversion with the NeoLoad interface.
+## Modify the Worksoft application to allow the conversion with the NeoLoad interface.
 
 1. In the Navigation pane, click **Applications**.
 
-2. In the Applications pane, on the version of the application that contains the process that you want to convert to a NeoLoad User Path, right-click and select **Edit**.
+2. In the **Applications** pane, on the version of the application that contains the process that you want to convert to a NeoLoad User Path, right-click and select **Edit**.
 
 <p align="center"><img src="/screenshots/applicationsedit.png" alt="Edit Application" /></p>
 
-3. In Edit Application Version window, select the **NeoLoad** interface in the Interfaces section and click OK.
+3. In **Edit Application Version** window, select the **NeoLoad** interface in the **Interfaces** section and click OK.
 
 <p align="center"><img src="/screenshots/applicationneoload.png" alt="Select NeoLoad" /></p>
 
 4. Right click again on the version and select **New Window**.
 
-5. In the New Window dialog, enter a Name, a Physical Name and select the NeoLoad Interface. Click OK
+5. In the **New Window** dialog, enter a Name, a Physical Name and select the NeoLoad Interface. Click OK.
 
 <p align="center"><img src="/screenshots/addwindow.png" alt="Add Window" /></p>
 
@@ -75,9 +75,9 @@ It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/d
 
 1. In the Navigation pane, click **Processes**.
 
-2. In the Applications pane, select the process that you want to convert to a NeoLoad User Path, right-click and select **Edit**.
+2. In the **Applications** pane, select the process that you want to convert to a NeoLoad User Path, right-click and select **Edit**.
 
-3. At the beginning of the Process, add a new Step associated to the NeoLoad window with the **StartRecording** Action.
+3. At the beginning of the Process, add a new Step associated with the NeoLoad window with the **StartRecording** Action.
 
 <p align="center"><img src="/screenshots/startrecording.png" alt="Start Recording" /></p>
 
@@ -86,44 +86,44 @@ It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/d
 5. Enter the User Path name, you can use the **Process Name** built-in System Variable.
 
 6. Enter the record Mode:
-    * **SAP GUI & WEB** to record both SAP GUI and the Web traffic (the System proxy will be updated)
+    * **SAP GUI & WEB** to record both SAP GUI and the Web traffic (the System proxy will be updated).
     * **SAP GUI** to record only SAP GUI.
-    * **WEB** to record only Web traffic (the System proxy will be updated)
+    * **WEB** to record only Web traffic (the System proxy will be updated).
 
-7. At the end of the Process, add a new Step associated to the NeoLoad window with the **StopRecording** Action.
+7. At the end of the Process, add a new Step associated with the NeoLoad window with the **StopRecording** Action.
 
 <p align="center"><img src="/screenshots/process.png" alt="Process" /></p>
 
-**Tip** : Once the conversion is done, you can comment the Steps associated to the NeoLoad interface with the **Comment** button.
+**Tip** : Once the conversion is done, you can comment the Steps associated with the NeoLoad interface with the **Comment** button.
 
 <p align="center"><img src="/screenshots/comment.png" alt="Comment" /></p>
 
 ## Add NeoLoad Transactions.
 
-In the Edit Process dialog, add a new Step associated to the NeoLoad window with the **StartTransaction** Action each time you want to start a NeoLoad Transaction.
+In the **Edit Process** dialog, add a new Step associated with the NeoLoad window with the **StartTransaction** Action each time you want to start a NeoLoad Transaction.
 
 <p align="center"><img src="/screenshots/transaction.png" alt="Transaction" /></p>
 
 ## Advanced Configuration
 
-The **advanced** parameter of the **StartRecording** Action allows to define the following options:
-* **designApiUrl**: the URL of the NeoLoad design API, by default it is http://localhost:7400/Design/v1/Service.svc/.
-* **updateUserPath**: Used to automatically update the User Path with the same name. Default value is true.
-* **isHttp2**: Used to record or not HTTP/2. Default value is true.
-* **addressToExclude**: List of addresses separated by a semicolon. Requests and responses through these addresses will not be taken into account by Neaoload when recording (example : 10.0.0.5:7400;10.3.1.15;localhost:9100)
+The **advanced** parameter of the **StartRecording** Action allows defining the following options:
+* **designApiUrl**: The URL of the NeoLoad design API, by default it is http://localhost:7400/Design/v1/Service.svc/.
+* **updateUserPath**: Used to automatically update the User Path with the same name. Default value is "true".
+* **isHttp2**: Used to record or not HTTP/2. Default value is "true".
+* **addressToExclude**: List of addresses separated by a semicolon. Requests and responses through these addresses will not be taken into account by NeoLoad when recording (example : 10.0.0.5:7400;10.3.1.15;localhost:9100)
 * **userAgent**: Used to specify the user agent.
 
 If you want to define multiple options, the options must be separated by carriage return. For example:<br />
 
 <p align="center"><img src="/screenshots/advanced.png" alt="Advanced" /></p>
 
-The **advanced** parameter of the **StopRecording** Action allows to define the following options:
-* **frameworkParameterSearch**: Default value is true.
-* **genericParameterSearch**: Default value is false.
-* **deleteRecording**: Default value is true.
-* **includeVariablesInUserPathUpdate**: Default value is true.
-* **updateSharedContainers**: Default value is false.
-* **matchingThreshold**: Default value is 60.
+The **advanced** parameter of the **StopRecording** Action allows defining the following options:
+* **frameworkParameterSearch**: Default value is "true".
+* **genericParameterSearch**: Default value is "false".
+* **deleteRecording**: Default value is "true".
+* **includeVariablesInUserPathUpdate**: Default value is "true".
+* **updateSharedContainers**: Default value is "false".
+* **matchingThreshold**: Default value is "60".
 
 ## ChangeLog
 
