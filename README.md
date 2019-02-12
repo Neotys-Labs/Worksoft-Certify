@@ -5,7 +5,7 @@
 ## Overview
 
 C# extension to integrate [Worksoft Certify](https://www.worksoft.com/) with [NeoLoad](https://www.neotys.com/neoload/overview) for Script maintenance.
-It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/documents/doc/neoload/latest/en/html/#11265.htm) to convert a Worksoft Certify Process to a NeoLoad User Path or update an existing User Path.
+It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/documents/doc/neoload/latest/en/html/#11265.htm) to convert a SAP GUI or Web Worksoft Certify Process to a NeoLoad User Path or update an existing User Path.
 
 | Property | Value |
 | ----------------    | ----------------   |
@@ -24,7 +24,7 @@ It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/d
 
 3. Unzip the **wsTransferToNeoLoad.zip** file in a folder nammed NeoLoad of the Worksoft\Certify\Interface Client\Worksoft\wsTest directory of the installation directory of Worksoft Certify(for example: C:\Program Files (x86)\Worksoft\Certify\Interface Client\Worksoft\wsTest\NeoLoad).
 
-4. Unblock "wsTransferToNeoLoad.dll" (Right click the DLL > Properties and tick **Unblock**).
+4. Unblock **wsTransferToNeoLoad.dll** (Right click the DLL > Properties and tick **Unblock**).
 
 5. Register the Assembly for COM interop by executing the following command: regasm.exe" /codebase **wsTransferToNeoLoad.dll** (regasm.exe can be found in %SystemRoot%\Microsoft.NET\Framework\v2.0.50727)
 
@@ -72,16 +72,18 @@ It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/d
 
 3. At the beginning of the Process, add a new Step associated to the NeoLoad window with the **StartRecording** Action.
 
-4. If identification is required by the NeoLoad API, use the apiKey parameter.
+4. If identification is required by the NeoLoad API, use the **apiKey** parameter.
 
 5. Enter the User Path name, you can use the **Process Name** built-in System Variable.
 
 6. Enter the record Mode:
-    * SAP GUI & WEB to record both SAP GUI and Web (the System proxy will be updated)
-    * SAP GUI to record only SAP GUI.
-    * WEB to record only Web (the System proxy will be updated)
+    * **SAP GUI & WEB** to record both SAP GUI and Web (the System proxy will be updated)
+    * **SAP GUI** to record only SAP GUI.
+    * **WEB** to record only Web (the System proxy will be updated)
 
 7. At the end of the Process, add a new Step associated to the NeoLoad window with the **StopRecording** Action.
+
+**Tip** : Once the conversion is done, you can comment the Steps associated to the NeoLoad interface with the **Comment** button.
 
 ## Add NeoLoad Transactions.
 
@@ -96,7 +98,7 @@ The **advanced** parameter of the **StartRecording** Action allows to define the
 * **addressToExclude**: List of addresses separated by a semicolon. Requests and responses through these addresses will not be taken into account by Neaoload when recording (example : 10.0.0.5:7400;10.3.1.15;localhost:9100)
 * **userAgent**: Used to specify the user agent.
 
-If you want to define multiple options, the options must be separated by carriage return. For example:
+If you want to define multiple options, the options must be separated by carriage return. For example:<br />
 updateUserPath=false
 isHttp2=false
 
