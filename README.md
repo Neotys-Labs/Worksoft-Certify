@@ -22,6 +22,8 @@ It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/d
 
 2. In the Navigation pane, click **Interfaces**. In the Interfaces Summary pane, right-click on the Interfaces node, then Import and select the **neoload-interface.xml** file from the release.
 
+<p align="center"><img src="/screenshots/interfacesimport.png" alt="Import NeoLoad interface" /></p>
+
 3. Unzip the **wsTransferToNeoLoad.zip** file in a folder nammed NeoLoad of the Worksoft\Certify\Interface Client\Worksoft\wsTest directory of the installation directory of Worksoft Certify(for example: C:\Program Files (x86)\Worksoft\Certify\Interface Client\Worksoft\wsTest\NeoLoad).
 
 4. Unblock **wsTransferToNeoLoad.dll** (Right click the DLL > Properties and tick **Unblock**).
@@ -57,7 +59,11 @@ It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/d
 
 2. In the Applications pane, on the version of the application that contains the process that you want to convert to a NeoLoad User Path, right-click and select **Edit**.
 
+<p align="center"><img src="/screenshots/applicationsedit.png" alt="Edit Application" /></p>
+
 3. In Edit Application Version window, select the **NeoLoad** interface in the Interfaces section and click OK.
+
+<p align="center"><img src="/screenshots/applicationneoload.png" alt="Select NeoLoad" /></p>
 
 4. Right click again on the version and select **New Window**.
 
