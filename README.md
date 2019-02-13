@@ -28,9 +28,11 @@ It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/d
 
 4. Unblock **wsTransferToNeoLoad.dll** (Right click the DLL > Properties and tick **Unblock**).
 
-5. Register the Assembly for COM interop by executing the following command: 
+<p align="center"><img src="/screenshots/unblock.png" alt="Unblock" /></p>
+
+5. Register the Assembly for COM interop by executing the following command as Administrator: 
 regasm.exe /codebase **wsTransferToNeoLoad.dll** 
-Executable **regasm.exe** can be found in **%SystemRoot%\Microsoft.NET\Framework\v2.0.50727**.
+Executable **regasm.exe** can be found in **%SystemRoot%\Microsoft.NET\Framework\v4.0.30319**.
 
 6. Edit the file **Worksoft\Certify\Interface Client\Worksoft\wsTest\wsTest.exe.config** in the Worksoft Certify installation directory, and add the following node at the end of the configuration node:
 ```xml
@@ -49,7 +51,7 @@ Executable **regasm.exe** can be found in **%SystemRoot%\Microsoft.NET\Framework
             <bindingRedirect oldVersion="0.0.0.0-5.8.4.0" newVersion="5.8.4.0" />
           </dependentAssembly>
         </assemblyBinding>
-      </runtime>
+    </runtime>
 ```
 7. Relaunch Worksoft Certify.
 
