@@ -126,7 +126,7 @@ namespace wsNeoLoad
             stopRecordingParamsBuilder.frameworkParameterSearch(frameworkParameterSearch).genericParameterSearch(genericParameterSearch);
 
             bool deleteRecording = advancedParameters.GetBooleanValue(Parameters.DELETE_RECORDING, "true");
-            bool includeVariables = advancedParameters.GetBooleanValue(Parameters.INCLUDE_VARIABLES_IN_USER_PATH_UPDATE, "false");
+            bool includeVariables = advancedParameters.GetBooleanValue(Parameters.INCLUDE_VARIABLES_IN_USER_PATH_UPDATE, "true");
             bool updateSharedContainers = advancedParameters.GetBooleanValue(Parameters.UPDATE_SHARED_CONTANERS, "false");
             string matchingThreshold = advancedParameters.GetValue(Parameters.MATCHING_THRESHOLD, "");
 
