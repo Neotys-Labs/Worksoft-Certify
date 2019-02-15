@@ -34,7 +34,7 @@ It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/d
 regasm.exe /codebase **wsTransferToNeoLoad.dll** 
 Executable **regasm.exe** can be found in **%SystemRoot%\Microsoft.NET\Framework\v4.0.30319**.
 
-6. Edit the file **Worksoft\Certify\Interface Client\Worksoft\wsTest\wsTest.exe.config** in the Worksoft Certify installation directory, and add the following node at the end of the configuration node:
+6. Edit the file **Worksoft\Certify\Interface Client\Worksoft\wsTest\wsTest.exe.config** in the Worksoft Certify installation directory, and add the following node inside the configuration node:
 ```xml
     <runtime>
         <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
