@@ -135,4 +135,4 @@ The **advanced** parameter of the **StopRecording** Action allows defining the f
 
 ## ChangeLog
 
-* Version 0.1.0 (February 12, 2019): Initial release.
+* Version 1.0.0 (February 18, 2019): Initial release.
