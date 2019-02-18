@@ -55,6 +55,8 @@ Executable **regasm.exe** can be found in **%SystemRoot%\Microsoft.NET\Framework
 ```
 7. Relaunch Worksoft Certify.
 
+**Warning**: You might need to launch both Certify and SAP Logon as administrator in order to convert the Certify Process to NeoLoad.
+
 ## Modify the Worksoft application to allow the conversion with the NeoLoad interface.
 
 1. In the Navigation pane, click **Applications**.
