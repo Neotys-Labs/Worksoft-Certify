@@ -102,6 +102,10 @@ Executable **regasm.exe** can be found in **%SystemRoot%\Microsoft.NET\Framework
 
 <p align="center"><img src="/screenshots/comment.png" alt="Comment" /></p>
 
+Running the process will transfer it to NeoLoad.
+
+**Important**: if UAC is enabled on Windows, Worksoft Certify and SAP Login need to run as Administrator to transfer a SAP GUI Process to NeoLoad.
+
 ## Add NeoLoad Transactions
 
 In the **Edit Process** dialog, add a new Step associated with the NeoLoad window with the **StartTransaction** Action each time you want to start a NeoLoad Transaction.
