@@ -44,7 +44,10 @@ namespace wsNeoLoad
             bool isSap = recordMode.ToLower().Contains("sap");
             startRecordingPB.isSapGuiProtocol(isSap);
             startRecordingPB.isHTTP2Protocol(isHttp2);
-            startRecordingPB.userAgent(userAgent);
+            if(userAgent != null && !userAgent.Equals(""))
+            {
+                startRecordingPB.userAgent(userAgent);
+            }
 
             try
             {
