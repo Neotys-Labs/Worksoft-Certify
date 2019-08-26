@@ -5,6 +5,8 @@ namespace wsNeoLoad
 {
     public class AdvancedParameters
     {
+        private static readonly LoggingService _log = LoggingService.GetLogger;
+
         Dictionary<string, string> data;
 
         public AdvancedParameters(string value)
@@ -13,7 +15,15 @@ namespace wsNeoLoad
             if (value != null && value.Length != 0)
             {
                 foreach (var row in Regex.Split(value, "\r\n|\r|\n"))
-                    data.Add(row.Split('=')[0], row.Split('=')[1]);
+                {
+                    if(row.Contains("="))
+                    {
+                        data.Add(row.Split('=')[0], row.Split('=')[1]);
+                    } else
+                    {
+                        _log.Error("Value " + row + " does not have right format.");
+                    }
+                }
             }
         }
 
