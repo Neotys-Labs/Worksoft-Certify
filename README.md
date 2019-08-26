@@ -138,5 +138,6 @@ The **advanced** parameter of the **StopRecording** Action allows defining the f
 * **matchingThreshold**: Default value is "60".
 
 ## ChangeLog
+* Version 1.0.1 (August 26, 2019): Fix empty User agent issue in Web recording.
 
 * Version 1.0.0 (February 18, 2019): Initial release.
