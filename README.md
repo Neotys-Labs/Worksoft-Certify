@@ -120,7 +120,9 @@ At this point NeoLoad cannot record the login process when it's launched by the 
 2. Edit the Actions to enter the appropriate login and password values.
 3. Ensure the login actions are inside a 'Login' transaction.
 4. Create a Shared Transaction by selecting 'Shared' in the contextual menu of the 'Login' Transaction.
-3. Drag&Dop the Shared 'Login' at the beginning of your converted User Paths.
+5. Drag&Dop the Shared 'Login' at the beginning of your converted User Paths.
+ 
+ <p align="center"><img src="/screenshots/loginshared.png" alt="Login Transaction" /></p>
         
 ## Advanced Configuration
 
