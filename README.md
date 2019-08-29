@@ -112,6 +112,16 @@ In the **Edit Process** dialog, add a new Step associated with the NeoLoad windo
 
 <p align="center"><img src="/screenshots/transaction.png" alt="Transaction" /></p>
 
+## Handling the login in the NeoLoad project
+
+At this point NeoLoad cannot record the login process when it's launched by the Certify action "Launch SAP". In this case, the login step must be handled manually on NeoLoad side.
+
+1. From NeoLoad, record a login process to your application. It will create the appropriate NeoLoad Actions in a temporary User Path.
+2. Edit the Actions to enter the appropriate login and password values.
+3. Ensure the login actions are inside a 'Login' transaction.
+4. Create a Shared Transaction by selecting 'Shared' in the contextual menu of the 'Login' Transaction.
+3. Drag&Dop the Shared 'Login' at the beginning of your converted User Paths.
+        
 ## Advanced Configuration
 
 ### StartRecording
