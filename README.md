@@ -24,7 +24,7 @@ It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/d
 
 <p align="center"><img src="/screenshots/interfacesimport.png" alt="Import NeoLoad interface" /></p>
 
-3. Unzip the file **wsTransferToNeoLoad.zip** in a folder named **NeoLoad** in the directory **Worksoft\Certify\Interface Client\Worksoft\wsTest directory** of the Worksoft Certify installation directory (for example: **C:\Program Files (x86)\Worksoft\Certify\Interface Client\Worksoft\wsTest\NeoLoad**).
+3. Unzip the file **wsTransferToNeoLoad.zip** in a folder named **NeoLoad** in the **Worksoft\Certify\Interface Client\Worksoft\wsTest** directory of the Worksoft Certify installation directory (for example: **C:\Program Files (x86)\Worksoft\Certify\Interface Client\Worksoft\wsTest\NeoLoad**).
 
 4. Unblock **wsTransferToNeoLoad.dll** (Right click the DLL > Properties and tick **Unblock**).
 
