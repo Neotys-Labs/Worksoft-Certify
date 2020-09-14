@@ -13,7 +13,7 @@ It allows you to interact with the NeoLoad [Design API](https://www.neotys.com/d
 | Author | Neotys |
 | License           | [BSD 2-Clause "Simplified"](https://github.com/Neotys-Labs/Worksoft-Certify/blob/master/LICENSE) |
 | NeoLoad Licensing | License FREE edition, or Enterprise edition, or Professional with Integration & Advanced Usage|
-| Supported versions | Tested with Worksoft Certify 10 and NeoLoad from version [6.6.0](https://www.neotys.com/support/download-neoload) (version 32 bits for SAP GUI)
+| Supported versions | Tested with Worksoft Certify versions 10.0 and 12.0, and with NeoLoad from [version 6.6.0 to 7.5.0](https://www.neotys.com/support/download-neoload) (version 32 bits for SAP GUI)
 | Download Binaries | See the [latest release](https://github.com/Neotys-Labs/Worksoft-Certify/releases/latest)|
 
 ## Setting up the NeoLoad Integration for Worksoft Certify
