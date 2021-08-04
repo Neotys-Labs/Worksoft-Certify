@@ -85,7 +85,7 @@ Executable **regasm.exe** can be found in **%SystemRoot%\Microsoft.NET\Framework
 
 <p align="center"><img src="/screenshots/startrecording.png" alt="Start Recording" /></p>
 
-4. If identification is required by the NeoLoad API, use the **apiKey** parameter.
+4. Set the **apiKey** parameter with an API Key of NeoLoad General settings or Project settings REST API. If no identification is required both in Project settings and in General settings, this parameter can be left blank.
 
 5. Enter the User Path name, you can use the **Process Name** built-in System Variable.
 
